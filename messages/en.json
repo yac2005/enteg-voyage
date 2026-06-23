@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "home": "Home",
+    "destinations": "Destinations",
+    "trips": "Trips",
+    "services": "Services",
+    "tadart": "Tadart",
+    "contact": "Contact"
+  },
+  "hero": {
+    "searchPlaceholder": "Where do you want to go?",
+    "tagline": "Discover Algeria differently",
+    "subtitle": "Organised trips, custom tours and authentic accommodation",
+    "cta": "Explore our trips"
+  }
+}

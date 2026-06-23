@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "destinations": "Destinations",
+    "trips": "Voyages",
+    "services": "Services",
+    "tadart": "Tadart",
+    "contact": "Contact"
+  },
+  "hero": {
+    "searchPlaceholder": "Où voulez-vous aller ?",
+    "tagline": "Découvrez l'Algérie autrement",
+    "subtitle": "Voyages organisés, circuits sur mesure et hébergement authentique",
+    "cta": "Explorer nos voyages"
+  }
+}
