@@ -1,0 +1,50 @@
+[
+  {
+    "id": "djanet",
+    "name": "Djanet",
+    "region": "Tamanrasset",
+    "description": "Porte du Tassili N'Ajjer, paysages lunaires et gravures rupestres millénaires.",
+    "image": "/images/destinations/djanet.jpg",
+    "tag": "Sahara"
+  },
+  {
+    "id": "ghardaia",
+    "name": "Ghardaïa",
+    "region": "Vallée du M'Zab",
+    "description": "Architecture mozabite unique, classée patrimoine mondial de l'UNESCO.",
+    "image": "/images/destinations/ghardaia.jpg",
+    "tag": "Patrimoine"
+  },
+  {
+    "id": "taghit",
+    "name": "Taghit",
+    "region": "Béchar",
+    "description": "Dunes dorées, palmeraie luxuriante et ksar ancestral au cœur du désert.",
+    "image": "/images/destinations/taghit.jpg",
+    "tag": "Désert"
+  },
+  {
+    "id": "oran",
+    "name": "Oran",
+    "region": "Ouest algérien",
+    "description": "Ville cosmopolite, architecture coloniale et culture raï au bord de la Méditerranée.",
+    "image": "/images/destinations/oran.jpg",
+    "tag": "Ville"
+  },
+  {
+    "id": "constantine",
+    "name": "Constantine",
+    "region": "Nord-Est",
+    "description": "La ville des ponts suspendus, perchée sur ses falaises vertigineuses.",
+    "image": "/images/destinations/constantine.jpg",
+    "tag": "Ville"
+  },
+  {
+    "id": "tlemcen",
+    "name": "Tlemcen",
+    "region": "Nord-Ouest",
+    "description": "Capitale de la culture islamique, mosquées et médersas d'exception.",
+    "image": "/images/destinations/tlemcen.jpg",
+    "tag": "Culture"
+  }
+]

@@ -8,8 +8,7 @@ export default function Hero() {
   const t = useTranslations("hero");
 
   return (
-    <section className="relative w-full h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden">
-      {/* Background image placeholder — replace src with real image later */}
+<section className="relative w-full h-[90vh] min-h-[600px] pt-20 flex items-center justify-center overflow-hidden">      {/* Background image placeholder — replace src with real image later */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('/images/hero-bg.jpg')" }}

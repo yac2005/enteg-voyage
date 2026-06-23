@@ -1,0 +1,50 @@
+[
+  {
+    "id": "sahara-djanet-7j",
+    "title": "Sahara Profond — Djanet",
+    "duration": "7 jours",
+    "price": 85000,
+    "currency": "DZD",
+    "destinations": ["Djanet", "Tassili N'Ajjer"],
+    "image": "/images/trips/djanet-trip.jpg",
+    "tag": "Voyage organisé",
+    "includes": ["Visa", "Transport", "Hébergement", "Guide"],
+    "featured": true
+  },
+  {
+    "id": "mzab-ghardaia-4j",
+    "title": "Vallée du M'Zab — Ghardaïa",
+    "duration": "4 jours",
+    "price": 45000,
+    "currency": "DZD",
+    "destinations": ["Ghardaïa", "Beni Isguen", "Melika"],
+    "image": "/images/trips/ghardaia-trip.jpg",
+    "tag": "Patrimoine",
+    "includes": ["Transport", "Hébergement", "Guide"],
+    "featured": true
+  },
+  {
+    "id": "taghit-desert-5j",
+    "title": "Désert & Dunes — Taghit",
+    "duration": "5 jours",
+    "price": 55000,
+    "currency": "DZD",
+    "destinations": ["Taghit", "Béchar", "Beni Abbes"],
+    "image": "/images/trips/taghit-trip.jpg",
+    "tag": "Aventure",
+    "includes": ["Transport", "Hébergement", "Chameau"],
+    "featured": true
+  },
+  {
+    "id": "nord-culture-6j",
+    "title": "Grand Tour du Nord",
+    "duration": "6 jours",
+    "price": 70000,
+    "currency": "DZD",
+    "destinations": ["Oran", "Tlemcen", "Constantine"],
+    "image": "/images/trips/nord-trip.jpg",
+    "tag": "Culture",
+    "includes": ["Transport", "Hébergement", "Guide"],
+    "featured": true
+  }
+]
