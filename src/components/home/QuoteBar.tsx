@@ -37,7 +37,8 @@ export default function QuoteBar() {
   };
 
   return (
-    <div className="relative z-20 -mt-8 mx-auto max-w-5xl px-6">
+    /* Changed '-mt-8' to '-mt-24' to lift it higher up into the hero container */
+    <div className="relative z-20 -mt-24 mx-auto max-w-5xl px-6">
       <div className="bg-white rounded-2xl shadow-xl px-6 py-5 flex flex-col md:flex-row items-center gap-4">
         {/* Destination */}
         <div className="flex-1 w-full">
@@ -65,7 +66,7 @@ export default function QuoteBar() {
           </label>
           <select
             value={date}
-            onChange={(e) => setDate(e.target.value)}
+            onChange={(e) => setDate(e.nav) || setDate(e.target.value)}
             className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-700 focus:outline-none focus:border-[var(--sienna)] bg-white"
           >
             <option value="">Mois souhaité</option>
