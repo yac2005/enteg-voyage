@@ -66,8 +66,7 @@ export default function QuoteBar() {
           </label>
           <select
             value={date}
-            onChange={(e) => setDate(e.nav) || setDate(e.target.value)}
-            className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-700 focus:outline-none focus:border-[var(--sienna)] bg-white"
+              onChange={(e) => setDate(e.target.value)}            className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-700 focus:outline-none focus:border-[var(--sienna)] bg-white"
           >
             <option value="">Mois souhaité</option>
             {months.map((m) => (
