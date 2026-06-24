@@ -1,10 +1,16 @@
+"use client";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Clock, MapPin, CheckCircle } from "lucide-react";
-import trips from "@/content/trips.json";
+import { getFeaturedTrips, Trip } from "@/lib/data";
 
 export default function FeaturedTrips() {
-  const featured = trips.filter((t) => t.featured);
+  const [trips, setTrips] = useState<Trip[]>([]);
+
+  useEffect(() => {
+    getFeaturedTrips().then(setTrips);
+  }, []);
 
   return (
     <section className="py-20 bg-[var(--parchment)]">
@@ -20,12 +26,11 @@ export default function FeaturedTrips() {
             De la visa jusqu'au retour, on s'occupe de tout.
           </p>
         </div>
-
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featured.map((trip) => (
+          {trips.map((trip) => (
             <Link
               key={trip.id}
-              href={`/trips/${trip.id}`}
+              href={`/trips/${trip.slug}`}
               className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
             >
               <div className="relative h-48 w-full">
@@ -41,12 +46,10 @@ export default function FeaturedTrips() {
                   </span>
                 </div>
               </div>
-
               <div className="p-4">
                 <h3 className="font-bold text-[var(--night)] text-base leading-snug">
                   {trip.title}
                 </h3>
-
                 <div className="flex items-center gap-4 mt-3 text-sm text-gray-500">
                   <span className="flex items-center gap-1">
                     <Clock className="w-4 h-4" />
@@ -57,19 +60,14 @@ export default function FeaturedTrips() {
                     {trip.destinations[0]}
                   </span>
                 </div>
-
                 <div className="mt-3 flex flex-wrap gap-1">
-                  {trip.includes.map((item) => (
-                    <span
-                      key={item}
-                      className="flex items-center gap-1 text-xs text-gray-500"
-                    >
+                  {trip.includedServices.map((item) => (
+                    <span key={item} className="flex items-center gap-1 text-xs text-gray-500">
                       <CheckCircle className="w-3 h-3 text-[var(--sage)]" />
                       {item}
                     </span>
                   ))}
                 </div>
-
                 <div className="mt-4 flex items-center justify-between">
                   <div>
                     <span className="text-xs text-gray-400">À partir de</span>
@@ -85,7 +83,6 @@ export default function FeaturedTrips() {
             </Link>
           ))}
         </div>
-
         <div className="text-center mt-10">
           <Link
             href="/trips"

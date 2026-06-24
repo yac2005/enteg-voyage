@@ -22,22 +22,23 @@ export default function ContactPage() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      await addDoc(collection(db, "contacts"), {
-        ...form,
-        createdAt: serverTimestamp(),
-      });
-      setSent(true);
-    } catch (err) {
-      console.error(err);
-      setError("Une erreur est survenue. Veuillez réessayer.");
-    } finally {
-      setLoading(false);
-    }
-  };
+const handleSubmit = async () => {
+  setLoading(true);
+  setError(null);
+  try {
+    const docRef = await addDoc(collection(db, "contacts"), {
+      ...form,
+      createdAt: serverTimestamp(),
+    });
+    console.log("Written with ID:", docRef.id);
+    setSent(true);
+  } catch (err) {
+    console.error("Firebase error:", err);
+    setError("Une erreur est survenue. Veuillez réessayer.");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="pt-24 pb-20">

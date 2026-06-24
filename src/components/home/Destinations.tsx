@@ -1,8 +1,17 @@
+"use client";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import destinations from "@/content/destinations.json";
+import { getDestinations, Destination } from "@/lib/data";
 
 export default function Destinations() {
+  const [destinations, setDestinations] = useState<Destination[]>([]);
+
+  useEffect(() => {
+    getDestinations().then(setDestinations);
+  }, []);
+  
+
   return (
     <section className="py-20 px-6 max-w-7xl mx-auto">
       <div className="text-center mb-12">
@@ -16,12 +25,11 @@ export default function Destinations() {
           Des dunes du Sahara aux côtes méditerranéennes, chaque destination raconte une histoire.
         </p>
       </div>
-
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {destinations.map((dest) => (
           <Link
             key={dest.id}
-            href={`/destinations/${dest.id}`}
+            href={`/destinations/${dest.slug}`}
             className="group relative rounded-2xl overflow-hidden h-72 block"
           >
             <Image
@@ -41,7 +49,6 @@ export default function Destinations() {
           </Link>
         ))}
       </div>
-
       <div className="text-center mt-10">
         <Link
           href="/destinations"

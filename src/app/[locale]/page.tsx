@@ -7,7 +7,7 @@ import Services from "@/components/home/Services";
 import Stats from "@/components/home/Stats";
 import CTA from "@/components/home/CTA";
 
-export default function HomePage() {
+export default async function HomePage() {
   return (
     <div>
       <Hero />
