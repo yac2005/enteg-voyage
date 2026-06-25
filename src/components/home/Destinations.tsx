@@ -12,6 +12,18 @@ export default function Destinations() {
   }, []);
   
 
+const [loading, setLoading] = useState(true);
+
+useEffect(() => {
+  getDestinations()
+    .then(setDestinations)
+    .finally(() => setLoading(false));
+}, []);
+
+if (loading) return <p>Chargement...</p>;
+if (!destinations.length) return <p>Aucune destination trouvée.</p>;
+
+
   return (
     <section className="pt-32 pb-20 px-6 max-w-7xl mx-auto">
       <div className="text-center mb-12">
