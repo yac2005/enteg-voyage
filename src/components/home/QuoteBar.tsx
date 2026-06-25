@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
+import { MapPin, Calendar, Users, ArrowRight } from "lucide-react";
 
 const destinations = [
   "Djanet & Tassili",
@@ -37,18 +37,20 @@ export default function QuoteBar() {
   };
 
   return (
-    /* Changed '-mt-8' to '-mt-24' to lift it higher up into the hero container */
-    <div className="relative z-20 -mt-24 mx-auto max-w-5xl px-6">
-      <div className="bg-white rounded-2xl shadow-xl px-6 py-5 flex flex-col md:flex-row items-center gap-4">
+    <div className="relative z-20 -mt-16 mx-auto max-w-4xl px-6">
+      <div className="bg-white rounded-2xl shadow-2xl shadow-black/8 px-8 py-6 flex flex-col md:flex-row items-end gap-5 border border-gray-100">
+        
         {/* Destination */}
         <div className="flex-1 w-full">
-          <label className="text-xs text-gray-400 uppercase tracking-wider mb-1 block">
+          <label className="flex items-center gap-1.5 text-[10px] text-gray-400 uppercase tracking-wider mb-2 font-bold">
+            <MapPin className="w-3.5 h-3.5 text-[var(--sienna)]" />
             Destination
           </label>
           <select
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
-            className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-700 focus:outline-none focus:border-[var(--sienna)] bg-white"
+            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-[var(--night)] font-medium focus:outline-none focus:ring-2 focus:ring-[var(--sienna)]/20 focus:border-[var(--sienna)] bg-white hover:border-gray-300 transition-all cursor-pointer appearance-none"
+            style={{ backgroundImage: "none" }}
           >
             <option value="">Choisir une destination</option>
             {destinations.map((d) => (
@@ -57,16 +59,19 @@ export default function QuoteBar() {
           </select>
         </div>
 
-        <div className="hidden md:block w-px h-10 bg-gray-200" />
+        <div className="hidden md:block w-px h-14 bg-gray-200" />
 
         {/* Date */}
         <div className="flex-1 w-full">
-          <label className="text-xs text-gray-400 uppercase tracking-wider mb-1 block">
+          <label className="flex items-center gap-1.5 text-[10px] text-gray-400 uppercase tracking-wider mb-2 font-bold">
+            <Calendar className="w-3.5 h-3.5 text-[var(--sienna)]" />
             Date de départ
           </label>
           <select
             value={date}
-              onChange={(e) => setDate(e.target.value)}            className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-700 focus:outline-none focus:border-[var(--sienna)] bg-white"
+            onChange={(e) => setDate(e.target.value)}
+            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-[var(--night)] font-medium focus:outline-none focus:ring-2 focus:ring-[var(--sienna)]/20 focus:border-[var(--sienna)] bg-white hover:border-gray-300 transition-all cursor-pointer appearance-none"
+            style={{ backgroundImage: "none" }}
           >
             <option value="">Mois souhaité</option>
             {months.map((m) => (
@@ -75,17 +80,19 @@ export default function QuoteBar() {
           </select>
         </div>
 
-        <div className="hidden md:block w-px h-10 bg-gray-200" />
+        <div className="hidden md:block w-px h-14 bg-gray-200" />
 
         {/* Travelers */}
         <div className="flex-1 w-full">
-          <label className="text-xs text-gray-400 uppercase tracking-wider mb-1 block">
+          <label className="flex items-center gap-1.5 text-[10px] text-gray-400 uppercase tracking-wider mb-2 font-bold">
+            <Users className="w-3.5 h-3.5 text-[var(--sienna)]" />
             Voyageurs
           </label>
           <select
             value={traveler}
             onChange={(e) => setTraveler(e.target.value)}
-            className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-700 focus:outline-none focus:border-[var(--sienna)] bg-white"
+            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-[var(--night)] font-medium focus:outline-none focus:ring-2 focus:ring-[var(--sienna)]/20 focus:border-[var(--sienna)] bg-white hover:border-gray-300 transition-all cursor-pointer appearance-none"
+            style={{ backgroundImage: "none" }}
           >
             <option value="">Nombre de voyageurs</option>
             {travelers.map((t) => (
@@ -97,9 +104,10 @@ export default function QuoteBar() {
         {/* CTA */}
         <button
           onClick={handleSubmit}
-          className="w-full md:w-auto bg-[var(--sienna)] text-white text-sm font-semibold px-8 py-3 rounded-xl hover:bg-[var(--night)] transition-colors duration-300 whitespace-nowrap uppercase tracking-wider"
+          className="w-full md:w-auto bg-[var(--sienna)] text-white text-sm font-semibold px-8 py-3.5 rounded-xl hover:bg-[var(--night)] transition-colors duration-300 whitespace-nowrap uppercase tracking-wider shadow-lg shadow-[var(--sienna)]/20 flex items-center justify-center gap-2"
         >
           Demander un devis
+          <ArrowRight className="w-4 h-4" />
         </button>
       </div>
     </div>

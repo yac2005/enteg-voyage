@@ -8,9 +8,9 @@
     "contact": "Contact"
   },
   "hero": {
-    "searchPlaceholder": "Où voulez-vous aller ?",
-    "tagline": "Découvrez l'Algérie autrement",
+    "tagline": "Discover Algeria differently",
     "subtitle": "Voyages organisés, circuits sur mesure et hébergement authentique",
-    "cta": "Explorer nos voyages"
+    "description": "Des circuits uniques à travers l'Algérie, du Sahara aux côtes méditerranéennes."
   }
 }
+

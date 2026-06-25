@@ -1,5 +1,8 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import Image from "next/image";
+
 const testimonials = [
   {
     name: "fute_450788",
@@ -45,8 +48,7 @@ const testimonials = [
   },
 ];
 
-// Duplicate for seamless loop
-const row1 = [...testimonials, ...testimonials];
+const row = [...testimonials, ...testimonials];
 
 function Stars({ count }: { count: number }) {
   return (
@@ -57,8 +59,9 @@ function Stars({ count }: { count: number }) {
           width="14"
           height="14"
           viewBox="0 0 14 14"
-          fill={i <= count ? "var(--sand)" : "none"}
-          stroke={i <= count ? "var(--sand)" : "rgba(201,169,110,0.3)"}
+          className={i <= count ? "text-[var(--sand)]" : "text-[var(--sand)]/20"}
+          fill={i <= count ? "currentColor" : "none"}
+          stroke="currentColor"
           strokeWidth="1.2"
         >
           <polygon points="7,1 8.8,5.2 13.3,5.6 10.1,8.4 11.1,12.8 7,10.4 2.9,12.8 3.9,8.4 0.7,5.6 5.2,5.2" />
@@ -70,112 +73,55 @@ function Stars({ count }: { count: number }) {
 
 function Avatar({ src, name }: { src: string | null; name: string }) {
   const initials = name.slice(0, 2).toUpperCase();
-  if (!src) {
+  const [error, setError] = useState(false);
+
+  if (!src || error) {
     return (
-      <div
-        style={{
-          width: 40,
-          height: 40,
-          borderRadius: "50%",
-          background: "linear-gradient(135deg, var(--sand), #8B6914)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontSize: 13,
-          fontWeight: 700,
-          color: "var(--night)",
-          flexShrink: 0,
-        }}
-      >
+      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--sand)] to-[#8B6914] flex items-center justify-center text-[13px] font-bold text-[var(--night)] flex-shrink-0">
         {initials}
       </div>
     );
   }
+
   return (
-    <img
-      src={src}
-      alt={name}
-      onError={(e) => {
-        const el = e.currentTarget as HTMLImageElement;
-        el.style.display = "none";
-        const fallback = el.nextElementSibling as HTMLElement;
-        if (fallback) fallback.style.display = "flex";
-      }}
-      style={{
-        width: 40,
-        height: 40,
-        borderRadius: "50%",
-        objectFit: "cover",
-        flexShrink: 0,
-      }}
-    />
+    <div className="relative w-10 h-10 rounded-full overflow-hidden flex-shrink-0 bg-[var(--parchment)]">
+      <Image
+        src={src}
+        alt={name}
+        fill
+        className="object-cover"
+        onError={() => setError(true)}
+      />
+    </div>
   );
 }
 
-function TestimonialCard({
-  item,
-}: {
-  item: (typeof testimonials)[0];
-}) {
+function TestimonialCard({ item }: { item: (typeof testimonials)[0] }) {
   return (
-    <div
-      style={{
-        width: 320,
-        flexShrink: 0,
-        background: "rgba(10,8,5,0.75)",
-        border: "1px solid rgba(201,169,110,0.18)",
-        borderRadius: 16,
-        padding: "24px 24px 20px",
-        display: "flex",
-        flexDirection: "column",
-        gap: 14,
-        marginRight: 20,
-      }}
-    >
+    <div className="w-[380px] flex-shrink-0 bg-white rounded-2xl border border-gray-100 p-6 flex flex-col gap-4 shadow-sm hover:shadow-md hover:border-[var(--sand)]/30 transition-all duration-300">
       {/* Quote mark */}
-      <svg width="24" height="18" viewBox="0 0 24 18" fill="none">
+      <svg width="24" height="18" viewBox="0 0 24 18" fill="none" className="text-[var(--sand)]/40">
         <path
           d="M0 18V10.8C0 7.2 1.2 4.2 3.6 1.8L5.4 0l2.4 1.8C6.6 3 5.7 4.5 5.4 6.6H9V18H0zm12 0V10.8c0-3.6 1.2-6.6 3.6-9L17.4 0l2.4 1.8C18.6 3 17.7 4.5 17.4 6.6H21V18H12z"
-          fill="var(--sand)"
-          opacity="0.5"
+          fill="currentColor"
         />
       </svg>
 
-      <p
-        style={{
-          color: "rgba(255,255,255,0.82)",
-          fontSize: 14,
-          lineHeight: 1.65,
-          fontWeight: 300,
-          flex: 1,
-        }}
-      >
+      {/* Quote text */}
+      <p className="text-gray-600 text-sm leading-relaxed flex-1">
         {item.text}
       </p>
 
-      <div style={{ display: "flex", alignItems: "center", gap: 12, marginTop: 4 }}>
+      {/* Footer */}
+      <div className="flex items-center gap-3 pt-3 border-t border-gray-50">
         <Avatar src={item.avatar} name={item.name} />
-        <div style={{ display: "none" /* fallback placeholder */ }} />
-        <div>
-          <div
-            style={{
-              color: "#fff",
-              fontWeight: 600,
-              fontSize: 13,
-              letterSpacing: "0.01em",
-            }}
-          >
+        <div className="min-w-0">
+          <div className="text-[var(--night)] font-semibold text-sm truncate">
             {item.name}
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 3 }}>
+          <div className="flex items-center gap-2 mt-0.5">
             <Stars count={item.rating} />
-            <span
-              style={{
-                color: "rgba(255,255,255,0.35)",
-                fontSize: 11,
-                letterSpacing: "0.05em",
-              }}
-            >
+            <span className="text-gray-400 text-xs whitespace-nowrap">
               {item.role}
             </span>
           </div>
@@ -186,98 +132,49 @@ function TestimonialCard({
 }
 
 export default function Testimonials() {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
   return (
-    <section
-      style={{
-        background: "rgba(201,169,110,0.08)",
-        paddingTop: 96,
-        paddingBottom: 96,
-        overflow: "hidden",
-      }}
-    >
+    <section className="py-24 bg-[var(--parchment)] overflow-hidden">
       {/* Header */}
-      <div style={{ textAlign: "center", marginBottom: 56, padding: "0 24px" }}>
-        <span
-          style={{
-            fontSize: 11,
-            letterSpacing: "0.3em",
-            textTransform: "uppercase",
-            color: "var(--sand)",
-            fontWeight: 500,
-          }}
-        >
+      <div className="text-center mb-14 px-6">
+        <span className="text-xs uppercase tracking-[0.3em] text-[var(--sienna)] font-medium">
           Ce qu'ils disent
         </span>
-        <h2
-          style={{
-            color: "var(--sand)",
-            fontSize: "clamp(28px, 4vw, 44px)",
-            fontWeight: 700,
-            lineHeight: 1.2,
-            marginTop: 12,
-            maxWidth: 560,
-            marginLeft: "auto",
-            marginRight: "auto",
-          }}
-        >
-          Des mots sincères sur{" "}
-          <span style={{ color: "var(--sand)" }}>nos voyages</span>.
+        <h2 className="text-[var(--night)] text-3xl md:text-4xl font-bold mt-3 max-w-lg mx-auto leading-tight">
+          Des mots sincères sur <span className="text-[var(--sienna)]">nos voyages</span>.
         </h2>
       </div>
 
-      {/* Row 1 — left to right */}
-      <div style={{ position: "relative" }}>
-        {/* Fade edges */}
+      {/* Single marquee row */}
+      <div className="relative">
+        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[var(--parchment)] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[var(--parchment)] to-transparent z-10 pointer-events-none" />
         <div
+          className="flex gap-5"
           style={{
-            position: "absolute",
-            left: 0,
-            top: 0,
-            bottom: 0,
-            width: 80,
-            background: "linear-gradient(to right, rgba(201,169,110,0.08), transparent)",
-            zIndex: 2,
-            pointerEvents: "none",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            right: 0,
-            top: 0,
-            bottom: 0,
-            width: 80,
-            background: "linear-gradient(to left, rgba(201,169,110,0.08), transparent)",
-            zIndex: 2,
-            pointerEvents: "none",
-          }}
-        />
-        <div
-          style={{
-            display: "flex",
-            animation: "marquee-ltr 40s linear infinite",
+            animation: prefersReducedMotion ? "none" : "marquee 50s linear infinite",
             width: "max-content",
           }}
         >
-          {row1.map((item, i) => (
+          {row.map((item, i) => (
             <TestimonialCard key={i} item={item} />
           ))}
         </div>
       </div>
 
-
-
       <style>{`
-        @keyframes marquee-ltr {
-          0%   { transform: translateX(0); }
+        @keyframes marquee {
+          0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
-        }
-        @keyframes marquee-rtl {
-          0%   { transform: translateX(-50%); }
-          100% { transform: translateX(0); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          [style*="marquee"] { animation: none !important; }
         }
       `}</style>
     </section>

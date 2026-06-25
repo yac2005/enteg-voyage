@@ -1,70 +1,78 @@
-import { Car, Map, Star, Home } from "lucide-react";
+import { Car, Map, Star, Home, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 const services = [
   {
     icon: Car,
     title: "Location de véhicules",
-    description:
-      "Avec ou sans chauffeur. Flotte variée adaptée à chaque terrain, des villes aux pistes sahariennes.",
+    description: "Flotte variée avec ou sans chauffeur, adaptée à chaque terrain.",
     href: "/services#vehicules",
   },
   {
     icon: Map,
     title: "Voyages organisés",
-    description:
-      "Visa, transport, hébergement, guide — tout est inclus. Choisissez votre destination, on fait le reste.",
+    description: "Visa, transport, hébergement, guide — tout est inclus.",
     href: "/trips",
   },
   {
     icon: Star,
     title: "Circuits sur mesure",
-    description:
-      "Vous avez une idée de voyage ? On la concrétise. Itinéraire, budget et dates selon vos envies.",
+    description: "Itinéraire, budget et dates selon vos envies.",
     href: "/services#custom",
   },
   {
     icon: Home,
     title: "Hébergement",
-    description:
-      "Hôtels partenaires ou notre propre maison d'hôte TADART — une expérience authentique garantie.",
+    description: "Hôtels partenaires ou notre maison d'hôte TADART.",
     href: "/tadart",
   },
 ];
 
 export default function Services() {
   return (
-    <section className="py-20 px-6 max-w-7xl mx-auto">
-      <div className="text-center mb-12">
-        <span className="text-sm uppercase tracking-widest text-[var(--sienna)] font-medium">
-          Ce qu'on fait
-        </span>
-        <h2 className="text-3xl md:text-4xl font-bold mt-2 text-[var(--night)]">
-          Nos services
-        </h2>
-        <p className="text-gray-500 mt-3 max-w-xl mx-auto">
-          Une agence complète pour que votre voyage en Algérie soit sans stress, de A à Z.
-        </p>
-      </div>
+    <section className="py-24 px-6 bg-white">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <span className="text-xs uppercase tracking-[0.2em] text-[var(--sienna)] font-medium">
+            Ce qu'on fait
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold mt-3 text-[var(--night)]">
+            Nos services
+          </h2>
+        </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {services.map((service) => (
-          <Link
-            key={service.title}
-            href={service.href}
-            className="group p-6 rounded-2xl border border-gray-100 hover:border-[var(--sand)] hover:shadow-md transition-all duration-300 bg-white"
-          >
-            <div className="w-12 h-12 rounded-xl bg-[var(--parchment)] flex items-center justify-center mb-4 group-hover:bg-[var(--sienna)] transition-colors duration-300">
-              <service.icon className="w-6 h-6 text-[var(--sienna)] group-hover:text-white transition-colors duration-300" />
-            </div>
-            <h3 className="font-bold text-[var(--night)] text-base mb-2">
-              {service.title}
-            </h3>
-            <p className="text-sm text-gray-500 leading-relaxed">
-              {service.description}
-            </p>
-          </Link>
-        ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {services.map((service) => (
+            <Link
+              key={service.title}
+              href={service.href}
+              className="group relative bg-[var(--parchment)] rounded-2xl p-6 hover:shadow-lg hover:shadow-[var(--sienna)]/5 transition-all duration-300"
+            >
+              {/* Top accent line */}
+              <div className="absolute top-0 left-6 right-6 h-0.5 bg-[var(--sienna)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+
+              {/* Icon + title row */}
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center group-hover:bg-[var(--sienna)] transition-colors duration-300">
+                  <service.icon className="w-5 h-5 text-[var(--sienna)] group-hover:text-white transition-colors duration-300" />
+                </div>
+                <h3 className="font-bold text-[var(--night)] text-base leading-tight">
+                  {service.title}
+                </h3>
+              </div>
+
+              {/* Description */}
+              <p className="text-sm text-gray-500 leading-relaxed pl-[52px]">
+                {service.description}
+              </p>
+
+              {/* Arrow */}
+              <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                <ArrowUpRight className="w-5 h-5 text-[var(--sienna)]" />
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   );
