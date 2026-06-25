@@ -7,6 +7,8 @@ import { Geist } from "next/font/google";
 import "../globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import DealsTicker from "@/components/home/DealsTicker";
+
 
 const geist = Geist({ subsets: ["latin"] });
 
@@ -36,7 +38,9 @@ export default async function LocaleLayout({
       <body className={geist.className}>
         <NextIntlClientProvider messages={messages}>
           <Navbar />
-          <main>{children}</main>
+          <main className="pt-36">
+            {children}
+          </main>
           <Footer />
         </NextIntlClientProvider>
       </body>

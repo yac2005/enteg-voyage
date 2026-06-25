@@ -13,7 +13,7 @@ export default function Destinations() {
   
 
   return (
-    <section className="py-20 px-6 max-w-7xl mx-auto">
+    <section className="pt-32 pb-20 px-6 max-w-7xl mx-auto">
       <div className="text-center mb-12">
         <span className="text-sm uppercase tracking-widest text-[var(--sienna)] font-medium">
           Nos destinations

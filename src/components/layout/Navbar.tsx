@@ -1,5 +1,6 @@
 "use client";
 
+import DealsTicker from "@/components/home/DealsTicker";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
@@ -180,6 +181,7 @@ export default function Navbar() {
           </Link>
         </div>
       )}
+      <DealsTicker />
     </header>
   );
 }
