@@ -63,7 +63,7 @@ export default function Stats() {
   }, []);
 
   return (
-    <section ref={ref} className="bg-[var(--night)] py-16 px-6">
+    <section ref={ref} className="bg-[var(--night)]/70 py-16 px-6">
       <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
         {stats.map((stat) => (
           <StatItem key={stat.label} {...stat} triggered={triggered} />

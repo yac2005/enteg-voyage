@@ -54,7 +54,7 @@ export default async function TripPage({
           <div className="grid grid-cols-2 gap-3">
             {trip.includedServices.map((item) => (
               <div key={item} className="flex items-center gap-2 bg-[var(--parchment)] rounded-xl px-4 py-3">
-                <CheckCircle className="w-5 h-5 text-[var(--sage)]" />
+                <CheckCircle className="w-5 h-5 text-[var(--sand)]" />
                 <span className="text-sm font-medium text-[var(--night)]">{item}</span>
               </div>
             ))}

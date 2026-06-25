@@ -63,7 +63,7 @@ export default function FeaturedTrips() {
                 <div className="mt-3 flex flex-wrap gap-1">
                   {trip.includedServices.map((item) => (
                     <span key={item} className="flex items-center gap-1 text-xs text-gray-500">
-                      <CheckCircle className="w-3 h-3 text-[var(--sage)]" />
+                      <CheckCircle className="w-3 h-3 text-[var(--sand)]" />
                       {item}
                     </span>
                   ))}

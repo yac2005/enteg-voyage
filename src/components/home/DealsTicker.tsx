@@ -33,8 +33,7 @@ export default function DealsTicker() {
 
   return (
     <div
-      className="w-full py-3 px-6 flex items-center justify-between"
-      style={{ backgroundColor: "#174d27" }}
+      className="bg-[var(--night)] w-full py-3 px-6 flex items-center justify-between"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -48,17 +47,16 @@ export default function DealsTicker() {
 
       {/* Message */}
       <div className="flex-1 flex items-center justify-center gap-4">
-        <span style={{ color: "#C9A96E" }} className="text-xs hidden sm:block select-none">✦</span>
+        <span className="text-xs hidden sm:block select-none text-[var(--sand)]">✦</span>
         <Link
           href={deal.href}
-          className={`text-xs uppercase tracking-[0.2em] font-medium text-center transition-opacity duration-300 hover:opacity-70 ${
+          className={`text-xs uppercase tracking-[0.2em] font-medium text-center transition-opacity duration-300 hover:opacity-70 text-[var(--parchment)] ${
             visible ? "opacity-100" : "opacity-0"
           }`}
-          style={{ color: "#E8D9C0" }}
         >
           {deal.text}
         </Link>
-        <span style={{ color: "#C9A96E" }} className="text-xs hidden sm:block select-none">✦</span>
+        <span className="text-xs hidden sm:block select-none text-[var(--sand)]">✦</span>
       </div>
 
       {/* Right arrow + dots */}
@@ -72,7 +70,10 @@ export default function DealsTicker() {
                 setTimeout(() => { setCurrent(i); setVisible(true); }, 300);
               }}
               className="w-1.5 h-1.5 rounded-full transition-all duration-300"
-              style={{ backgroundColor: i === current ? "#C9A96E" : "rgba(201,169,110,0.3)" }}
+              style={{
+                backgroundColor:
+                  i === current ? "#C9A96E" : "rgba(201,169,110,0.3)",
+              }}
             />
           ))}
         </div>
