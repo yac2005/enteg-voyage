@@ -32,62 +32,70 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative w-full h-[90vh] min-h-[600px] flex flex-col items-center justify-center overflow-hidden">
-      {/* Background */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/hero-bg1.jpg')" }}
-      />
-      <div className="absolute inset-0 bg-black/50" />
+    <div className="relative">
+      {/* Hero image section */}
+      <section className="relative w-full h-[75vh] min-h-[500px] flex flex-col items-center justify-center overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/images/hero-bg1.jpg')" }}
+        />
+        <div className="absolute inset-0 bg-black/45" />
 
-      {/* Hero text */}
-    <div className="relative z-10 bottom-40 flex flex-col items-center text-center px-4 max-w-4xl mx-auto gap-6">
-      <h1 className="text-5xl md:text-7xl font-bold text-white/70 leading-tight">
-        {t("tagline")}
-      </h1>
-    </div>
+        {/* Hero text — centered, not too low */}
+        <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-4xl mx-auto gap-4 -mt-16">
+          <h1 className="text-5xl md:text-7xl font-bold text-white/85 leading-tight">
+            {t("tagline")}
+          </h1>
+        </div>
+      </section>
 
-      {/* Quote bar — anchored to bottom of hero */}
-      <div className="absolute bottom-35 left-0 right-0 z-20 px-6">
-
+      {/* Quote bar — sits below hero on mobile, overlaps on desktop */}
+      <div className="relative z-20 md:absolute md:bottom-0 md:left-0 md:right-0 md:translate-y-1/2 px-6 py-6 md:py-0 bg-[var(--parchment)] md:bg-transparent">
         <div className="max-w-5xl mx-auto bg-white/30 backdrop-blur-md rounded-2xl shadow-2xl px-6 py-5 flex flex-col md:flex-row items-center gap-4">
+
           {/* Destination */}
           <div className="flex-1 w-full">
-            <label className="text-black/70 font-bold text-xs uppercase tracking-wider mb-1 block">Destination</label>
+            <label className="text-black/60 font-bold text-xs uppercase tracking-wider mb-1 block">
+              Destination
+            </label>
             <select
               value={destination}
               onChange={(e) => setDestination(e.target.value)}
-              className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-700 focus:outline-none focus:border-[var(--sienna)] bg-white"
+              className="w-full border border-white/40 rounded-lg px-3 py-2 text-sm text-[var(--night)] font-medium focus:outline-none bg-white/70"
             >
               <option value="">Choisir une destination</option>
               {destinations.map((d) => <option key={d} value={d}>{d}</option>)}
             </select>
           </div>
 
-          <div className="hidden md:block w-px h-10 bg-gray-200" />
+          <div className="hidden md:block w-px h-10 bg-white/30" />
 
           {/* Date */}
           <div className="flex-1 w-full">
-            <label className="text-black/70 font-bold text-xs uppercase tracking-wider mb-1 block">Date de départ</label>
+            <label className="text-black/60 font-bold text-xs uppercase tracking-wider mb-1 block">
+              Date de départ
+            </label>
             <select
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-700 focus:outline-none focus:border-[var(--sienna)] bg-white"
+              className="w-full border border-white/40 rounded-lg px-3 py-2 text-sm text-[var(--night)] font-medium focus:outline-none bg-white/70"
             >
               <option value="">Mois souhaité</option>
               {months.map((m) => <option key={m} value={m}>{m}</option>)}
             </select>
           </div>
 
-          <div className="hidden md:block w-px h-10 bg-gray-200" />
+          <div className="hidden md:block w-px h-10 bg-white/30" />
 
           {/* Travelers */}
           <div className="flex-1 w-full">
-            <label className="text-black/70 font-bold text-xs uppercase tracking-wider mb-1 block">Voyageurs</label>
+            <label className="text-black/60 font-bold text-xs uppercase tracking-wider mb-1 block">
+              Voyageurs
+            </label>
             <select
               value={traveler}
               onChange={(e) => setTraveler(e.target.value)}
-              className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-700 focus:outline-none focus:border-[var(--sienna)] bg-white"
+              className="w-full border border-white/40 rounded-lg px-3 py-2 text-sm text-[var(--night)] font-medium focus:outline-none bg-white/70"
             >
               <option value="">Nombre de voyageurs</option>
               {travelers.map((t) => <option key={t} value={t}>{t}</option>)}
@@ -103,6 +111,6 @@ export default function Hero() {
           </button>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
