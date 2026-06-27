@@ -32,16 +32,15 @@ export default function Hero() {
   };
 
   return (
-    <div className="relative">
-      {/* Hero image section */}
-      <section className="relative w-full h-[75vh] min-h-[500px] flex flex-col items-center justify-center overflow-hidden">
+    <div className="relative pb-0 md:pb-0 -mt-[108px]">
+
+      <section className="relative w-full h-[90vh] min-h-[500px] flex flex-col items-center justify-center pt-[108px]">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('/images/hero-bg1.jpg')" }}
         />
         <div className="absolute inset-0 bg-black/45" />
 
-        {/* Hero text — centered, not too low */}
         <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-4xl mx-auto gap-4 -mt-16">
           <h1 className="text-5xl md:text-7xl font-bold text-white/85 leading-tight">
             {t("tagline")}
@@ -49,11 +48,26 @@ export default function Hero() {
         </div>
       </section>
 
-      {/* Quote bar — sits below hero on mobile, overlaps on desktop */}
-      <div className="relative z-20 md:absolute md:bottom-0 md:left-0 md:right-0 md:translate-y-[40%] px-6 py-6 md:py-0 bg-[var(--parchment)] md:bg-transparent">
-        <div className="max-w-5xl mx-auto bg-white/30 backdrop-blur-md rounded-2xl shadow-2xl px-6 py-5 flex flex-col md:flex-row items-center gap-4">
+      {/* 
+        FIX: Added -mt-24 to pull the quote bar UP
+        Adjust the value (-mt-20, -mt-28, etc.) until it sits where you want
+      */}
+      <div className="
+        relative z-20
+        -mt-24
+        px-4 md:px-6
+        py-4 md:py-0
+        bg-[var(--parchment)] md:bg-transparent
+      ">
+        <div className="
+          max-w-5xl mx-auto
+          bg-white md:bg-white/30
+          md:backdrop-blur-md
+          rounded-2xl shadow-2xl
+          px-4 md:px-6 py-4 md:py-5
+          flex flex-col md:flex-row items-center gap-4
+        ">
 
-          {/* Destination */}
           <div className="flex-1 w-full">
             <label className="text-black/60 font-bold text-xs uppercase tracking-wider mb-1 block">
               Destination
@@ -70,7 +84,6 @@ export default function Hero() {
 
           <div className="hidden md:block w-px h-10 bg-white/30" />
 
-          {/* Date */}
           <div className="flex-1 w-full">
             <label className="text-black/60 font-bold text-xs uppercase tracking-wider mb-1 block">
               Date de départ
@@ -87,7 +100,6 @@ export default function Hero() {
 
           <div className="hidden md:block w-px h-10 bg-white/30" />
 
-          {/* Travelers */}
           <div className="flex-1 w-full">
             <label className="text-black/60 font-bold text-xs uppercase tracking-wider mb-1 block">
               Voyageurs
@@ -102,7 +114,6 @@ export default function Hero() {
             </select>
           </div>
 
-          {/* CTA */}
           <button
             onClick={handleSubmit}
             className="w-full md:w-auto bg-[var(--sienna)] text-white text-sm font-semibold px-8 py-3 rounded-xl hover:bg-[var(--night)] transition-colors duration-300 whitespace-nowrap uppercase tracking-wider"
