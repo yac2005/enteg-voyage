@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Users } from "lucide-react";
-import { getTransport, Transport, driverMode} from "@/lib/data";
+import { getTransport, Transport} from "@/lib/data";
 
 type Filter = "all" | "with" | "without";
 
 // Helper function to handle the driver badge UI based on driverMode
-const getDriverBadge = (mode: driverMode) => {
+const getDriverBadge = (mode: string) => {
   switch (mode) {
     case "with":
       return { label: "Avec chauffeur", style: "bg-[var(--sienna)] text-white" };

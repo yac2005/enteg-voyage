@@ -28,6 +28,7 @@ export interface Trip {
 export interface Transport {
   id: string;
   vehicleType: string;
+  driverMode: "with" | "without" | "both";
   capacity: number;
   pricePerDay: number;
   pricePerDayNoDriver: number | null;
@@ -35,7 +36,6 @@ export interface Transport {
   image: string;
   description: string;
   terrain: string[];
-  driverMode: "with" | "without" | "both";
 }
 
 export async function getDestinations(): Promise<Destination[]> {
