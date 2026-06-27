@@ -50,7 +50,7 @@ export default function Hero() {
       </section>
 
       {/* Quote bar — sits below hero on mobile, overlaps on desktop */}
-      <div className="relative z-20 md:absolute md:bottom-0 md:left-0 md:right-0 md:translate-y-[35%] px-6 py-6 md:py-0 bg-[var(--parchment)] md:bg-transparent">
+      <div className="relative z-20 md:absolute md:bottom-0 md:left-0 md:right-0 md:translate-y-[40%] px-6 py-6 md:py-0 bg-[var(--parchment)] md:bg-transparent">
         <div className="max-w-5xl mx-auto bg-white/30 backdrop-blur-md rounded-2xl shadow-2xl px-6 py-5 flex flex-col md:flex-row items-center gap-4">
 
           {/* Destination */}
