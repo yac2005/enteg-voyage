@@ -105,41 +105,44 @@ const trips = [
 
 const transport = [
   {
-    vehicleType: "4x4 Toyota Land Cruiser",
+    vehicleType: "Toyota Land Cruiser 4x4",
     capacity: 7,
     withDriver: true,
+    driverOptional: false,
     pricePerDay: 15000,
+    pricePerDayNoDriver: null,
     currency: "DZD",
     image: "/images/transport/landcruiser.jpg",
+    description: "Le roi des pistes sahariennes. Idéal pour les expéditions désertiques et les terrains difficiles.",
+    terrain: ["Sahara", "Montagne", "Piste"],
   },
   {
-    vehicleType: "Minibus",
+    vehicleType: "Mercedes Sprinter",
     capacity: 15,
     withDriver: true,
+    driverOptional: false,
     pricePerDay: 18000,
+    pricePerDayNoDriver: null,
     currency: "DZD",
-    image: "/images/transport/minibus.jpg",
+    image: "/images/transport/sprinter.jpg",
+    description: "Transport de groupe premium. Parfait pour les circuits organisés et les transferts longue distance.",
+    terrain: ["Ville", "Route nationale", "Aéroport"],
   },
   {
-    vehicleType: "Berline",
-    capacity: 4,
+    vehicleType: "Peugeot Expert",
+    capacity: 8,
     withDriver: false,
-    pricePerDay: 8000,
+    driverOptional: true,
+    pricePerDay: 9000,
+    pricePerDayNoDriver: 7000,
     currency: "DZD",
-    image: "/images/transport/berline.jpg",
-  },
-  {
-    vehicleType: "SUV",
-    capacity: 5,
-    withDriver: false,
-    pricePerDay: 10000,
-    currency: "DZD",
-    image: "/images/transport/suv.jpg",
+    image: "/images/transport/expert.jpg",
+    description: "Polyvalent et économique. Disponible avec ou sans chauffeur selon vos besoins.",
+    terrain: ["Ville", "Route", "Inter-wilaya"],
   },
 ];
 
 export async function seedFirestore() {
-  // seed destinations
   const destSnap = await getDocs(collection(db, "destinations"));
   if (destSnap.empty) {
     for (const d of destinations) {
@@ -148,7 +151,6 @@ export async function seedFirestore() {
     console.log("Destinations seeded.");
   }
 
-  // seed trips
   const tripsSnap = await getDocs(collection(db, "trips"));
   if (tripsSnap.empty) {
     for (const t of trips) {
@@ -157,11 +159,12 @@ export async function seedFirestore() {
     console.log("Trips seeded.");
   }
 
-  // seed transport
   const transportSnap = await getDocs(collection(db, "transport"));
+  console.log("Transport docs:", transportSnap.size);
   if (transportSnap.empty) {
     for (const v of transport) {
       await addDoc(collection(db, "transport"), v);
+      console.log("Added:", v.vehicleType);
     }
     console.log("Transport seeded.");
   }

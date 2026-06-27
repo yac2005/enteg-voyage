@@ -8,9 +8,12 @@ import Stats from "@/components/home/Stats";
 import CTA from "@/components/home/CTA";
 import DealsTicker from "@/components/home/DealsTicker";
 import Testimonials from "@/components/home/Testimonials";
+import { seedFirestore } from "@/lib/seed";
+
 
 
 export default async function HomePage() {
+    await seedFirestore();
   return (
     <div>
       <Hero />

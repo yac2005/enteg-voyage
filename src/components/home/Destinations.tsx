@@ -6,26 +6,19 @@ import { getDestinations, Destination } from "@/lib/data";
 
 export default function Destinations() {
   const [destinations, setDestinations] = useState<Destination[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getDestinations().then(setDestinations);
+    getDestinations()
+      .then(setDestinations)
+      .finally(() => setLoading(false));
   }, []);
-  
 
-const [loading, setLoading] = useState(true);
-
-useEffect(() => {
-  getDestinations()
-    .then(setDestinations)
-    .finally(() => setLoading(false));
-}, []);
-
-if (loading) return <p>Chargement...</p>;
-if (!destinations.length) return <p>Aucune destination trouvée.</p>;
-
+  if (loading) return <div className="pt-48 pb-20 text-center text-gray-400">Chargement...</div>;
+  if (!destinations.length) return <div className="pt-48 pb-20 text-center text-gray-400">Aucune destination trouvée.</div>;
 
   return (
-    <section className="pt-32 pb-20 px-6 max-w-7xl mx-auto">
+    <section className="pt-48 pb-20 px-6 max-w-7xl mx-auto">
       <div className="text-center mb-12">
         <span className="text-sm uppercase tracking-widest text-[var(--sienna)] font-medium">
           Nos destinations

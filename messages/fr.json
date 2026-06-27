@@ -4,6 +4,7 @@
     "destinations": "Destinations",
     "trips": "Voyages",
     "services": "Services",
+    "transport": "Location",
     "tadart": "Tadart",
     "contact": "Contact"
   },
@@ -13,4 +14,3 @@
     "description": "Des circuits uniques à travers l'Algérie, du Sahara aux côtes méditerranéennes."
   }
 }
-

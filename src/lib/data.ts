@@ -29,10 +29,13 @@ export interface Transport {
   id: string;
   vehicleType: string;
   capacity: number;
-  withDriver: boolean;
   pricePerDay: number;
+  pricePerDayNoDriver: number | null;
   currency: string;
   image: string;
+  description: string;
+  terrain: string[];
+  driverMode: "with" | "without" | "both";
 }
 
 export async function getDestinations(): Promise<Destination[]> {

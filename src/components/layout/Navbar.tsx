@@ -11,8 +11,7 @@ import { usePathname, useRouter } from "next/navigation";
 const links = [
   { key: "home", href: "/" },
   { key: "destinations", href: "/destinations" },
-  { key: "trips", href: "/trips" },
-  { key: "services", href: "/services" },
+  { key: "transport", href: "/transport" },
   { key: "tadart", href: "/tadart" },
   { key: "contact", href: "/contact" },
 ];
