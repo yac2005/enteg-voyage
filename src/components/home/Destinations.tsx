@@ -31,7 +31,7 @@ export default function Destinations() {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-8">
         {destinations.map((dest) => (
           <Link
             key={dest.id}
@@ -39,9 +39,12 @@ export default function Destinations() {
             className="group relative block"
           >
             {/* 
-              AGGRESSIVE BORDER: Thick, dark, visible frame
+              AGGRESSIVE SHADOW: No border, just heavy shadow
+              - Larger gap so shadow has room to breathe
+              - Multi-layer shadow for depth
+              - Darker, more spread
             */}
-            <div className="relative rounded-2xl overflow-hidden h-56 md:h-72 bg-white border-[3px] border-[#C9A96E] shadow-[0_6px_25px_rgba(26,18,8,0.2)] transition-all duration-300 group-hover:shadow-[0_10px_40px_rgba(26,18,8,0.3)] group-hover:border-[#B85C2A]">
+            <div className="relative rounded-2xl overflow-hidden h-52 md:h-72 shadow-[0_8px_30px_rgba(26,18,8,0.25),0_2px_8px_rgba(26,18,8,0.15)] transition-all duration-300 group-hover:shadow-[0_15px_50px_rgba(26,18,8,0.35),0_5px_15px_rgba(26,18,8,0.2)] group-hover:-translate-y-1">
               <Image
                 src={dest.image}
                 alt={dest.name}
