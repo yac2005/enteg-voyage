@@ -34,10 +34,6 @@ export default function Hero() {
   return (
     <div className="relative pb-0 md:pb-[72px] -mt-[108px]">
 
-      {/* ============================================
-          DESKTOP: Full screen hero (unchanged)
-          MOBILE: Shorter hero with bottom text
-      ============================================ */}
       <section className="relative w-full h-[60vh] md:h-screen min-h-[400px] md:min-h-[500px] flex flex-col items-center justify-end md:justify-center pt-[108px] pb-36 md:pb-0">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -45,7 +41,6 @@ export default function Hero() {
         />
         <div className="absolute inset-0 bg-black/40 md:bg-black/45" />
 
-        {/* Text: bottom on mobile, centered on desktop */}
         <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-4xl mx-auto gap-4 mb-4 md:mb-0 md:-mt-16">
           <h1 className="text-3xl md:text-6xl font-bold text-white/90 md:text-white/85 leading-tight">
             {t("tagline")}
@@ -53,12 +48,7 @@ export default function Hero() {
         </div>
       </section>
 
-      {/* ============================================
-          DESKTOP: Quote bar overlaid on hero (unchanged)
-          MOBILE: Separate compact bar below hero
-      ============================================ */}
-      
-      {/* DESKTOP: Absolute positioned, lifted up */}
+      {/* DESKTOP: Unchanged */}
       <div className="
         hidden md:block
         absolute z-20
@@ -73,7 +63,6 @@ export default function Hero() {
           px-6 py-5
           flex flex-row items-center gap-4
         ">
-          {/* ... desktop form fields ... */}
           <div className="flex-1 w-full">
             <label className="text-black/60 font-bold text-xs uppercase tracking-wider mb-1 block">
               Destination
@@ -129,28 +118,22 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ============================================
-          MOBILE: Completely different design
-          - Compact horizontal scroll or single row
-          - No labels, just icons + placeholders
-          - Sticky or floating action button
-      ============================================ */}
+      {/* MOBILE: Transparent glassmorphism */}
       <div className="
         md:hidden
         relative z-20
         -mt-20
         px-4
       ">
-        {/* Mobile quote bar: compact, icon-based, no labels */}
         <div className="
           max-w-lg mx-auto
-          bg-white
-          rounded-2xl shadow-[0_8px_30px_rgba(26,18,8,0.2)]
+          bg-white/75 backdrop-blur-lg
+          border border-white/40
+          rounded-2xl shadow-[0_8px_30px_rgba(26,18,8,0.15)]
           px-4 py-4
           flex flex-col gap-3
         ">
-          {/* Single row with icon + select */}
-          <div className="flex items-center gap-3 border-b border-gray-100 pb-3">
+          <div className="flex items-center gap-3 border-b border-white/30 pb-3">
             <svg className="w-5 h-5 text-[var(--sienna)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -165,8 +148,7 @@ export default function Hero() {
             </select>
           </div>
 
-          {/* Date row */}
-          <div className="flex items-center gap-3 border-b border-gray-100 pb-3">
+          <div className="flex items-center gap-3 border-b border-white/30 pb-3">
             <svg className="w-5 h-5 text-[var(--sienna)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
@@ -180,7 +162,6 @@ export default function Hero() {
             </select>
           </div>
 
-          {/* Travelers row */}
           <div className="flex items-center gap-3 pb-1">
             <svg className="w-5 h-5 text-[var(--sienna)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -195,7 +176,6 @@ export default function Hero() {
             </select>
           </div>
 
-          {/* CTA: full width, prominent */}
           <button
             onClick={handleSubmit}
             className="w-full bg-[var(--sienna)] text-white text-sm font-bold py-3.5 rounded-xl hover:bg-[var(--night)] transition-colors duration-300 uppercase tracking-wider mt-1"
