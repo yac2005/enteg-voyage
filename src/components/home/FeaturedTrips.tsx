@@ -27,48 +27,55 @@ export default function FeaturedTrips() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* 
+          CHANGED: grid-cols-2 on mobile, lg:grid-cols-4 on desktop
+          gap-4 on mobile, gap-6 on desktop
+        */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {trips.map((trip) => (
             <Link
               key={trip.id}
               href={`/trips/${trip.slug}`}
-              className="group bg-white rounded-2xl overflow-hidden border border-transparent hover:border-[var(--sand)] hover:shadow-lg hover:shadow-[var(--sienna)]/5 transition-all duration-300 flex flex-col"
+              className="group bg-white rounded-2xl overflow-hidden border border-transparent hover:border-[var(--sand)] transition-all duration-300 flex flex-col
+                /* Mobile: aggressive shadow | Desktop: subtle shadow */
+                shadow-[0_12px_40px_rgba(26,18,8,0.35),0_4px_12px_rgba(26,18,8,0.25)] 
+                md:shadow-none md:hover:shadow-lg md:hover:shadow-[var(--sienna)]/5"
             >
               {/* Image */}
-              <div className="relative h-48 w-full overflow-hidden">
+              <div className="relative h-36 md:h-48 w-full overflow-hidden">
                 <Image
                   src={trip.image}
                   alt={trip.title}
                   fill
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
-                <div className="absolute top-3 left-3">
-                  <span className="bg-[var(--sienna)] text-white text-xs px-3 py-1.5 rounded-full font-semibold uppercase tracking-wide">
+                <div className="absolute top-2 left-2 md:top-3 md:left-3">
+                  <span className="bg-[var(--sienna)] text-white text-[10px] md:text-xs px-2 py-1 md:px-3 md:py-1.5 rounded-full font-semibold uppercase tracking-wide">
                     {trip.tag}
                   </span>
                 </div>
               </div>
 
               {/* Content */}
-              <div className="p-4 flex flex-col flex-1">
-                <h3 className="font-bold text-[var(--night)] text-base leading-snug group-hover:text-[var(--sienna)] transition-colors duration-200">
+              <div className="p-3 md:p-4 flex flex-col flex-1">
+                <h3 className="font-bold text-[var(--night)] text-sm md:text-base leading-snug group-hover:text-[var(--sienna)] transition-colors duration-200">
                   {trip.title}
                 </h3>
 
                 {/* Meta */}
-                <div className="flex items-center gap-3 mt-2 text-xs text-gray-400">
+                <div className="flex items-center gap-2 md:gap-3 mt-2 text-[10px] md:text-xs text-gray-400">
                   <span className="flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5" />
+                    <Clock className="w-3 h-3 md:w-3.5 md:h-3.5" />
                     {trip.duration}
                   </span>
                   <span className="flex items-center gap-1">
-                    <MapPin className="w-3.5 h-3.5" />
+                    <MapPin className="w-3 h-3 md:w-3.5 md:h-3.5" />
                     {trip.destinations[0]}
                   </span>
                 </div>
 
-                {/* Includes — tighter, less dominant */}
-                <div className="mt-2.5 flex flex-wrap gap-x-2.5 gap-y-1">
+                {/* Includes — hidden on mobile (too cramped), visible on md+ */}
+                <div className="hidden md:flex mt-2.5 flex-wrap gap-x-2.5 gap-y-1">
                   {trip.includedServices.map((item) => (
                     <span
                       key={item}
@@ -80,22 +87,11 @@ export default function FeaturedTrips() {
                   ))}
                 </div>
 
-                {/* Footer — price + CTA */}
-                <div className="mt-auto pt-4 flex items-end justify-between">
-                  <div>
-                    <span className="text-[10px] text-gray-400 uppercase tracking-wider">
-                      À partir de
-                    </span>
-                    <p className="text-[var(--night)] font-bold text-lg leading-tight">
-                      {trip.price.toLocaleString()}
-                      <span className="text-sm font-semibold text-[var(--sienna)] ml-0.5">
-                        DZD
-                      </span>
-                    </p>
-                  </div>
-                  <span className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--sienna)] group-hover:underline">
+                {/* Footer — CTA only, NO PRICE */}
+                <div className="mt-auto pt-3 md:pt-4 flex items-center justify-end">
+                  <span className="inline-flex items-center gap-1 text-[10px] md:text-xs font-semibold text-[var(--sienna)] group-hover:underline">
                     Voir
-                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+                    <ArrowRight className="w-3 h-3 md:w-3.5 md:h-3.5 transition-transform group-hover:translate-x-0.5" />
                   </span>
                 </div>
               </div>
