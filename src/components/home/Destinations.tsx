@@ -31,7 +31,7 @@ export default function Destinations() {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-8">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
         {destinations.map((dest) => (
           <Link
             key={dest.id}
@@ -39,12 +39,13 @@ export default function Destinations() {
             className="group relative block"
           >
             {/* 
-              AGGRESSIVE SHADOW: No border, just heavy shadow
-              - Larger gap so shadow has room to breathe
-              - Multi-layer shadow for depth
-              - Darker, more spread
+              MASSIVE SHADOW: Heavy, dark, very visible
+              - 3-layer shadow for depth
+              - Darker color (night brown)
+              - Large spread and blur
+              - Even more space between cards
             */}
-            <div className="relative rounded-2xl overflow-hidden h-52 md:h-72 shadow-[0_8px_30px_rgba(26,18,8,0.25),0_2px_8px_rgba(26,18,8,0.15)] transition-all duration-300 group-hover:shadow-[0_15px_50px_rgba(26,18,8,0.35),0_5px_15px_rgba(26,18,8,0.2)] group-hover:-translate-y-1">
+            <div className="relative rounded-2xl overflow-hidden h-48 md:h-72 shadow-[0_12px_40px_rgba(26,18,8,0.4),0_4px_12px_rgba(26,18,8,0.3),0_0_4px_rgba(26,18,8,0.2)] transition-all duration-300 group-hover:shadow-[0_20px_60px_rgba(26,18,8,0.5),0_8px_20px_rgba(26,18,8,0.35),0_0_8px_rgba(26,18,8,0.25)] group-hover:-translate-y-2">
               <Image
                 src={dest.image}
                 alt={dest.name}
