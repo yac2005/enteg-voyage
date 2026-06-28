@@ -31,30 +31,42 @@ export default function Destinations() {
         </p>
       </div>
 
-      {/* 
-        CHANGED: grid-cols-2 on all screens, md:grid-cols-3 for desktop
-        Mobile: 2 per row | Desktop: 3 per row
-      */}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
         {destinations.map((dest) => (
           <Link
             key={dest.id}
             href={`/destinations/${dest.slug}`}
-            className="group relative rounded-2xl overflow-hidden h-56 md:h-72 block"
+            className="group relative block"
           >
-            <Image
-              src={dest.image}
-              alt={dest.name}
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-            <div className="absolute bottom-0 left-0 p-3 md:p-5">
-              <span className="text-[10px] md:text-xs uppercase tracking-wider text-[var(--sand)] font-medium">
-                {dest.tag}
-              </span>
-              <h3 className="text-white text-base md:text-xl font-bold mt-1">{dest.name}</h3>
-              <p className="text-white/70 text-xs md:text-sm mt-1">{dest.region}</p>
+            {/* 
+              FANCY BORDER: Gradient border + inner shadow
+              - Outer div: gradient background (sand → sienna)
+              - Padding creates the "border" thickness
+              - Inner div: image with rounded corners + inner shadow for depth
+            */}
+            <div className="relative p-[3px] rounded-2xl bg-gradient-to-br from-[var(--sand)] via-[var(--sienna)] to-[#8B4513] transition-all duration-500 group-hover:shadow-[0_0_25px_rgba(201,169,110,0.4)] group-hover:p-[4px]">
+              
+              {/* Inner container with image */}
+              <div className="relative rounded-[13px] overflow-hidden h-56 md:h-72 shadow-[inset_0_2px_10px_rgba(0,0,0,0.3)]">
+                <Image
+                  src={dest.image}
+                  alt={dest.name}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                
+                {/* Content */}
+                <div className="absolute bottom-0 left-0 p-3 md:p-5">
+                  <span className="text-[10px] md:text-xs uppercase tracking-wider text-[var(--sand)] font-medium">
+                    {dest.tag}
+                  </span>
+                  <h3 className="text-white text-base md:text-xl font-bold mt-1">{dest.name}</h3>
+                  <p className="text-white/70 text-xs md:text-sm mt-1">{dest.region}</p>
+                </div>
+              </div>
             </div>
           </Link>
         ))}
