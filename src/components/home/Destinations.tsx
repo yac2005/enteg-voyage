@@ -39,11 +39,9 @@ export default function Destinations() {
             className="group relative block"
           >
             {/* 
-              VISIBLE MAP-STYLE BORDER
-              Combines: white bg + subtle border + soft shadow + ring
-              This creates the framed look like your map card
+              AGGRESSIVE BORDER: Thick, dark, visible frame
             */}
-            <div className="relative rounded-2xl overflow-hidden h-56 md:h-72 bg-white border border-[#E8DFD0] shadow-[0_4px_20px_rgba(26,18,8,0.12)] ring-1 ring-black/5 transition-all duration-300 group-hover:shadow-[0_8px_35px_rgba(26,18,8,0.18)] group-hover:border-[#D4C9B8]">
+            <div className="relative rounded-2xl overflow-hidden h-56 md:h-72 bg-white border-[3px] border-[#C9A96E] shadow-[0_6px_25px_rgba(26,18,8,0.2)] transition-all duration-300 group-hover:shadow-[0_10px_40px_rgba(26,18,8,0.3)] group-hover:border-[#B85C2A]">
               <Image
                 src={dest.image}
                 alt={dest.name}
