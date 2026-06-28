@@ -49,11 +49,12 @@ export default function Hero() {
       </section>
 
       {/* 
-        CHANGED: md:bottom-0 → md:bottom-12 (lifts quote bar UP by 48px on desktop)
+        FIX: md:-translate-y-8 pulls the bar UP by 32px
+        (negative translate moves opposite to positive)
       */}
       <div className="
         relative z-20
-        md:absolute md:bottom-12 md:left-0 md:right-0 md:translate-y-1/2
+        md:absolute md:bottom-0 md:left-0 md:right-0 md:-translate-y-8
         px-4 md:px-6
         py-4 md:py-0
         bg-[var(--parchment)] md:bg-transparent
@@ -66,7 +67,7 @@ export default function Hero() {
           px-4 md:px-6 py-4 md:py-5
           flex flex-col md:flex-row items-center gap-4
         ">
-          {/* ... rest unchanged ... */}
+
           <div className="flex-1 w-full">
             <label className="text-black/60 font-bold text-xs uppercase tracking-wider mb-1 block">
               Destination
