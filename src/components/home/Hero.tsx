@@ -34,32 +34,26 @@ export default function Hero() {
   return (
     <div className="relative pb-0 md:pb-[72px] -mt-[108px]">
 
-      {/* Hero section — NO overflow-hidden so the quote bar can escape */}
       <section className="relative w-full h-screen min-h-[500px] flex flex-col items-center justify-center pt-[108px]">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('/images/hero-bg1.jpg')" }}
         />
-        {/* Overlay stops EXACTLY at the section bottom — no gap */}
         <div className="absolute inset-0 bg-black/45" />
 
-        {/* Hero text */}
         <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-4xl mx-auto gap-4 -mt-16">
-          {/* CHANGED: text-7xl → text-6xl on desktop (smaller) */}
           <h1 className="text-5xl md:text-6xl font-bold text-white/85 leading-tight">
             {t("tagline")}
           </h1>
         </div>
       </section>
 
-      {/* Quote bar
-          — mobile: normal flow below the hero, parchment background
-          — desktop: absolutely positioned, half inside / half outside the hero
-            translate-y-1/2  (valid Tailwind) moves it down by its own height's half
+      {/* 
+        CHANGED: md:bottom-0 → md:bottom-12 (lifts quote bar UP by 48px on desktop)
       */}
       <div className="
         relative z-20
-        md:absolute md:bottom-0 md:left-0 md:right-0 md:translate-y-1/2
+        md:absolute md:bottom-12 md:left-0 md:right-0 md:translate-y-1/2
         px-4 md:px-6
         py-4 md:py-0
         bg-[var(--parchment)] md:bg-transparent
@@ -72,8 +66,7 @@ export default function Hero() {
           px-4 md:px-6 py-4 md:py-5
           flex flex-col md:flex-row items-center gap-4
         ">
-
-          {/* Destination */}
+          {/* ... rest unchanged ... */}
           <div className="flex-1 w-full">
             <label className="text-black/60 font-bold text-xs uppercase tracking-wider mb-1 block">
               Destination
@@ -90,7 +83,6 @@ export default function Hero() {
 
           <div className="hidden md:block w-px h-10 bg-white/30" />
 
-          {/* Date */}
           <div className="flex-1 w-full">
             <label className="text-black/60 font-bold text-xs uppercase tracking-wider mb-1 block">
               Date de départ
@@ -107,7 +99,6 @@ export default function Hero() {
 
           <div className="hidden md:block w-px h-10 bg-white/30" />
 
-          {/* Travelers */}
           <div className="flex-1 w-full">
             <label className="text-black/60 font-bold text-xs uppercase tracking-wider mb-1 block">
               Voyageurs
@@ -122,7 +113,6 @@ export default function Hero() {
             </select>
           </div>
 
-          {/* CTA */}
           <button
             onClick={handleSubmit}
             className="w-full md:w-auto bg-[var(--sienna)] text-white text-sm font-semibold px-8 py-3 rounded-xl hover:bg-[var(--night)] transition-colors duration-300 whitespace-nowrap uppercase tracking-wider"
