@@ -34,30 +34,41 @@ export default function Hero() {
   return (
     <div className="relative pb-0 md:pb-0 -mt-[108px]">
 
-      <section className="relative w-full h-[90vh] min-h-[500px] flex flex-col items-center justify-center pt-[108px]">
+      {/* 
+        MOBILE: h-[70vh] shorter hero | DESKTOP: h-[90vh] unchanged
+        MOBILE: justify-end pushes text to bottom | DESKTOP: justify-center
+        MOBILE: pb-32 reserves space for quote bar | DESKTOP: no padding
+      */}
+      <section className="relative w-full h-[70vh] md:h-[90vh] min-h-[500px] flex flex-col items-center justify-end md:justify-center pt-[108px] pb-32 md:pb-0">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('/images/hero-bg1.jpg')" }}
         />
         <div className="absolute inset-0 bg-black/45" />
 
-        <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-4xl mx-auto gap-4 -mt-16">
-          <h1 className="text-5xl md:text-7xl font-bold text-white/85 leading-tight">
+        {/* 
+          MOBILE: no -mt-16, text sits naturally at bottom | DESKTOP: -mt-16 unchanged
+        */}
+        <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-4xl mx-auto gap-4 md:-mt-16">
+          <h1 className="text-4xl md:text-7xl font-bold text-white/85 leading-tight">
             {t("tagline")}
           </h1>
         </div>
       </section>
 
       {/* 
-        FIX: Added -mt-24 to pull the quote bar UP
-        Adjust the value (-mt-20, -mt-28, etc.) until it sits where you want
+        MOBILE: absolute positioned at bottom of hero, no negative margin | DESKTOP: relative with -mt-24
+        MOBILE: bg-white/95 solid white | DESKTOP: transparent with backdrop blur
       */}
       <div className="
-        relative z-20
-        -mt-24
+        absolute md:relative
+        bottom-4 md:bottom-auto
+        left-0 right-0 md:left-auto md:right-auto
+        z-20
         px-4 md:px-6
-        py-4 md:py-0
-        bg-[var(--parchment)] md:bg-transparent
+        py-0 md:py-0
+        -mt-0 md:-mt-24
+        bg-transparent md:bg-[var(--parchment)]
       ">
         <div className="
           max-w-5xl mx-auto
@@ -75,7 +86,7 @@ export default function Hero() {
             <select
               value={destination}
               onChange={(e) => setDestination(e.target.value)}
-              className="w-full border border-white/40 rounded-lg px-3 py-2 text-sm text-[var(--night)] font-medium focus:outline-none bg-white/70"
+              className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-[var(--night)] font-medium focus:outline-none bg-white"
             >
               <option value="">Choisir une destination</option>
               {destinations.map((d) => <option key={d} value={d}>{d}</option>)}
@@ -91,7 +102,7 @@ export default function Hero() {
             <select
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              className="w-full border border-white/40 rounded-lg px-3 py-2 text-sm text-[var(--night)] font-medium focus:outline-none bg-white/70"
+              className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-[var(--night)] font-medium focus:outline-none bg-white"
             >
               <option value="">Mois souhaité</option>
               {months.map((m) => <option key={m} value={m}>{m}</option>)}
@@ -107,7 +118,7 @@ export default function Hero() {
             <select
               value={traveler}
               onChange={(e) => setTraveler(e.target.value)}
-              className="w-full border border-white/40 rounded-lg px-3 py-2 text-sm text-[var(--night)] font-medium focus:outline-none bg-white/70"
+              className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-[var(--night)] font-medium focus:outline-none bg-white"
             >
               <option value="">Nombre de voyageurs</option>
               {travelers.map((t) => <option key={t} value={t}>{t}</option>)}
